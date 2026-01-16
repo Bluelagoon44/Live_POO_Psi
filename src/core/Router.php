@@ -9,8 +9,8 @@ class Router{
   
             if(class_exists($controller)){
                 $controllerObject = new $controller();
-                if(method_exists($controllerObject,"index"))
-                    $controllerObject->index();
+                if(method_exists($controllerObject,"start"))
+                    $controllerObject->start();
                 else    
                     throw new Exception("Aucune méthode index définie dans la classe $controllerObject");
             }
