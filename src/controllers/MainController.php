@@ -2,15 +2,11 @@
     class MainController extends Controller{
         public function start(){
             try{
-                // Ici on gère les requêtes SQL nécessaires pour l'affichage de la page
-                // Ainsi que les formulaires présents sur la page
-
-                // Exemple :
-                $users = User::getUsers();
-                var_dump($users);
-                // if(isset($_POST["yolo"])){
-                //     User::deleteUser($_POST["yolo"]);
-                // }
+                $pokemons = Pokemon::getPokemons();
+                $rand = rand(0, count($pokemons)-1);
+                if(isset($_POST["capture"]))
+                    Pokemon::capture($_POST["capture"]);
+                $pokemonsCaptured = Pokemon::getCapturedPokemons();
             }
             catch(Exception $e){
                 echo $e->getMessage();
